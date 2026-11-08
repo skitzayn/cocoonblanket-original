@@ -1,11 +1,11 @@
 ---
-import leftImg from '../assets/images/left-image.webp'
-import ftrVid from '../assets/videos/footer-vid.mp4'
+import leftImg from '../../assets/images/left-image.webp';
+import ftrVid from '../../assets/videos/footer-vid.mp4';
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-2 h-screen w-full font-light text-white">
+<div class="grid grid-cols-1 grid-rows-2 md:grid-rows-1 md:grid-cols-2 h-screen w-full font-light text-white">
 
-    <div class="relative w-full h-full">
+    <div class="relative w-full h-full min-h-0">
 
         <img src={leftImg.src} alt="Bundle and Save" class="absolute inset-0 w-full h-full object-cover">
         <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent"></div>
@@ -23,7 +23,7 @@ import ftrVid from '../assets/videos/footer-vid.mp4'
         </div>
     </div>
 
-    <div class="relative w-full h-full bg-black">
+    <div class="relative w-full h-full min-h-0 bg-black">
 
         <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
             <source src={ftrVid} type="video/mp4">

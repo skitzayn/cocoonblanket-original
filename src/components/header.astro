@@ -1,28 +1,240 @@
 ---
 import cocoonLogo from '../assets/images/cocoon-logo-black.png'
+import quizImage from '../assets/images/founders-fav.png';
 ---
 
 <header>
-    <div id="main-header" class="fixed flex w-full items-center justify-between px-4 py-4 text-white font-light z-9999 transition-colors duration-300">
+    <div id="main-header" class="fixed flex w-full items-center justify-between px-4 py-4 text-white font-light z-100 transition-colors duration-300">
 
-        <div>
-            <ul class="flex gap-8">
-                <a href="#"><li>Shop</li></a>
-                <a href="#" class="max-[745px]:hidden"><li>About Us</li></a>
-            </ul>
-        </div>
+        <ul class="flex gap-8">
+            <li><a href="#" class="relative after:bg-current after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-[width] after:duration-700" data-extra-open aria-controls="extra-panel" aria-expanded="false">Shop</a></li>
+            <li><a href="/about" class="relative after:bg-current after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-[width] after:duration-700 max-[990px]:hidden">About Us</a></li>
+        </ul>
 
-        <div>
-            <a href="#">
-                <img id="header-logo" src={cocoonLogo.src} alt="Logo" width="40" class="invert transition-all duration-300">
-            </a>
-        </div>
+        <a href="/">
+            <img id="header-logo" src={cocoonLogo.src} alt="Logo" width="40" class="invert transition-all duration-300">
+        </a>
 
-        <div>
-            <ul class="flex gap-8">
-                <a href="#"><li>Search</li></a>
-                <a href="#" class="max-[745px]:hidden"><li>Bag</li></a>
-            </ul>
-        </div>
+        <ul class="flex gap-8">
+            <li><a href="#" class="relative after:bg-current after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-[width] after:duration-700 max-[990px]:hidden" data-search-open aria-controls="search-panel" aria-expanded="false">Search</a></li>
+            <li><a href="#" class="relative after:bg-current after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-[width] after:duration-700" data-bag-open aria-controls="bag-panel" aria-expanded="false">Bag</a></li>
+        </ul>
+
     </div>
+
+    <div id="bag-overlay" data-bag-close class="fixed inset-0 z-9998 bg-black/50 backdrop-blur-[10px] opacity-0 pointer-events-none transition-opacity duration-500 cursor-pointer"></div>
+
+    <div id="bag-panel" inert class="bg-[#F0F0F0] fixed top-0 right-0 z-9999 w-[480px] max-w-full px-4 py-4 h-dvh font-light flex flex-col justify-between translate-x-full transition-transform duration-1000 ease-in-out">
+
+        <div class="flex flex-col gap-6">
+
+            <div class="flex justify-between items-center">
+                <p class="font-marcellus text-6xl">BAG</p>
+                <a href="#" data-bag-close class="relative after:bg-black after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-all after:duration-700 text-sm">Close</a>
+            </div>
+
+            <div class="flex flex-col gap-1">
+                <p>Add 2 Blankets to Save 15%.</p>
+
+                <div class="grid grid-cols-3">
+                    <p class="flex items-center justify-center border text-xs py-2 border-black/20">1 Item</p>
+                    <p class="flex items-center justify-center border text-xs py-2 border-black/20">2 — 15% Off</p>
+                    <p class="flex items-center justify-center border text-xs py-2 border-black/20">3+ — 20% Off</p>
+                </div>
+            </div>
+
+            <div>
+                <p class="text-black/40 text-2xl">Your Bag is Empty!</p>
+            </div>
+
+        </div>
+
+        <div class="border-t border-black/20">
+
+            <div class="flex flex-col gap-1 text-xs py-3">
+
+                <div class="flex justify-between">
+                    <p class="text-black/40">Shipping</p>
+                    <p class="text-black/40">Free</p>
+                </div>
+
+                <div class="flex justify-between">
+                    <p>Subtotal (0 Items)</p>
+                    <p>$0.00</p>
+                </div>
+
+                <div>
+                    <p class="text-black/40">Taxes Calculated at Checkout.</p>
+                </div>
+
+            </div>
+
+            <div class="grid grid-cols-1 bg-[#141414] hover:bg-white transition-all duration-400 border border-[#141414]">
+                <a href="#" data-bag-close class="flex items-center justify-center text-white py-3 hover:text-[#141414] transition-all duration-400">Continue Shopping</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="search-overlay" data-search-close class="fixed inset-0 z-9998 bg-black/50 backdrop-blur-[10px] opacity-0 pointer-events-none transition-opacity duration-500 cursor-pointer"></div>
+
+    <div id="search-panel" inert class="fixed top-0 left-0 z-9999 bg-[#141414] w-screen py-6 text-white -translate-y-full transition-transform duration-700 ease-in-out px-4">
+
+        <div class="flex items-center justify-between pb-6 font-light">
+
+            <ul class="flex gap-8">
+                <li><a href="#" class="relative after:bg-current after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-[width] after:duration-700" data-search-close>Close</a></li>
+            </ul>
+
+            <ul class="flex gap-8">
+                <li><a href="#" class="relative after:bg-current after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-[width] after:duration-700" data-bag-open aria-controls="bag-panel" aria-expanded="false">Bag</a></li>
+            </ul>
+
+        </div>
+
+        <div class="flex justify-between items-center border-t border-white/20 pt-6">
+
+            <input id="search-input" type="text" name="ad" placeholder="TYPE TO SEARCH" class="font-marcellus text-7xl flex w-full focus:outline-none max-[1035px]:text-6xl max-[865px]:text-5xl max-[695px]:text-4xl max-[500px]:text-2xl">
+
+            <a href="#"><i class="fi fi-rs-arrow-small-right text-7xl opacity-50 flex justify-center items-center"></i></a>
+
+        </div>
+
+    </div>
+
+    <div id="extra-overlay" data-extra-close class="fixed inset-0 z-9998 bg-black/50 backdrop-blur-[10px] opacity-0 pointer-events-none transition-opacity duration-500 cursor-pointer"></div>
+
+    <div id="extra-panel" inert class="fixed top-0 left-0 z-9999 w-screen max-h-dvh overflow-y-auto overscroll-contain pb-[env(safe-area-inset-bottom)] bg-[#141414] text-white pt-6 -translate-y-full transition-transform duration-700 ease-in-out">
+
+        <div class="flex items-center justify-between px-4 pb-6 font-light">
+
+            <ul class="flex gap-8">
+                <li><a href="#" class="relative after:bg-current after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-[width] after:duration-700" data-extra-close>Close</a></li>
+            </ul>
+
+            <ul class="flex gap-8">
+                <li><a href="#" class="relative after:bg-current after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-[width] after:duration-700" data-bag-open aria-controls="bag-panel" aria-expanded="false">Bag</a></li>
+            </ul>
+
+        </div>
+
+        <div class="grid grid-cols-1 min-[1060px]:grid-cols-2 px-4 font-light">
+
+            <div>
+
+                <div class="grid grid-flow-col grid-rows-3 grid-cols-2 min-[1060px]:grid-rows-2 min-[1060px]:grid-cols-[repeat(3,max-content)] min-[1060px]:justify-between gap-x-6 border-t border-white/20">
+
+                    <div class="flex flex-col gap-3 text-sm py-6 min-[1060px]:py-[22px]">
+                        <p class="opacity-60">Featured</p>
+
+                        <ul class="flex flex-col gap-1">
+                            <li><a href="#" class="relative after:bg-white after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-all after:duration-700">Shop All</a></li>
+                            <li><a href="#" class="relative after:bg-white after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-all after:duration-700">New Arrivals</a></li>
+                            <li><a href="#" class="relative after:bg-white after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-all after:duration-700">Best Sellers</a></li>
+                            <li><a href="#" class="relative after:bg-white after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-all after:duration-700">Bundle & Save</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-col gap-3 text-sm py-6 min-[1060px]:py-[22px] min-[1060px]:justify-end">
+                        <p class="opacity-60">Shop by Size</p>
+
+                        <ul class="flex flex-col gap-1">
+                            <li><a href="#" class="relative after:bg-white after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-all after:duration-700">Small</a></li>
+                            <li><a href="#" class="relative after:bg-white after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-all after:duration-700">Medium</a></li>
+                            <li><a href="#" class="relative after:bg-white after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-all after:duration-700">Large</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-col gap-3 text-sm py-6 min-[1060px]:py-[22px] min-[1060px]:px-10 min-[1060px]:border-l border-white/20">
+                        <p class="opacity-60">Collections</p>
+
+                        <ul class="flex flex-col gap-1">
+                            <li><a href="#" class="relative after:bg-white after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-all after:duration-700">Launch Collection</a></li>
+                            <li><a href="#" class="relative after:bg-white after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-all after:duration-700">Founder's Favorites</a></li>
+                            <li><a href="#" class="relative after:bg-white after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-all after:duration-700">Weighted Collection</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-col gap-3 text-sm py-6 min-[1060px]:py-[22px] px-6 min-[1060px]:px-10 border-l border-white/20 min-[1060px]:justify-end">
+                        <p class="opacity-60">Shop by Line</p>
+
+                        <ul class="flex flex-col gap-1">
+                            <li><a href="#" class="relative after:bg-white after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-all after:duration-700">Classic</a></li>
+                            <li><a href="#" class="relative after:bg-white after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-all after:duration-700">Weighted</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-col gap-3 text-sm py-6 min-[1060px]:py-[22px] px-6 min-[1060px]:px-10 border-l border-white/20">
+                        <p class="opacity-60">Shop Styles</p>
+
+                        <ul class="flex flex-col gap-1">
+                            <li><a href="#" class="relative after:bg-white after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-all after:duration-700">Solids</a></li>
+                            <li><a href="#" class="relative after:bg-white after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-all after:duration-700">Washed</a></li>
+                            <li><a href="#" class="relative after:bg-white after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-all after:duration-700">Stripes</a></li>
+                            <li><a href="#" class="relative after:bg-white after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-all after:duration-700">Weighted</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-col gap-3 text-sm py-6 min-[1060px]:py-[22px] px-6 min-[1060px]:px-10 border-l border-white/20 min-[1060px]:justify-end">
+                        <p class="opacity-60">About Us</p>
+
+                        <ul class="flex flex-col gap-1">
+                            <li><a href="/about" class="relative after:bg-white after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-all after:duration-700">Who We Are</a></li>
+                            <li><a href="/about" class="relative after:bg-white after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-all after:duration-700">Why Cocoon</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="hidden min-[1060px]:block border-t min-[1060px]:border-l border-white/20 min-[1060px]:pl-4 py-6">
+
+                <div class="flex flex-col gap-3 px-6 py-6 h-full bg-[#292929] border border-white/20">
+                    <p class="text-3xl">Find Your Cocoon</p>
+
+                    <p>Can't choose a blanket? Take our interactive quiz to get personalized recommendations that you'll love.</p>
+
+                    <a href="#" class="w-full border border-white/20 py-3 flex items-center justify-center hover:bg-white hover:text-[#292929] transition-all duration-400">Find My Blanket</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </header>
+
+<script>
+    type PanelName = 'bag' | 'search' | 'extra';
+
+    const panels: Record<PanelName, { panel: HTMLElement | null; overlay: HTMLElement | null; hidden: string }> = {
+        bag: {panel:document.getElementById('bag-panel'), overlay:document.getElementById('bag-overlay'), hidden:'translate-x-full'},
+        search: {panel:document.getElementById('search-panel'), overlay:document.getElementById('search-overlay'), hidden:'-translate-y-full'},
+        extra: {panel:document.getElementById('extra-panel'), overlay:document.getElementById('extra-overlay'), hidden:'-translate-y-full'},
+    };
+
+    const searchInput = document.getElementById('search-input') as HTMLInputElement | null;
+
+    function toggle(name:PanelName, open: boolean) {
+
+        if (open) { (Object.keys(panels) as PanelName[]) .filter((n) => n !== name) .forEach((n) => toggle(n, false));}
+
+        const {panel, overlay, hidden} = panels[name];
+
+        panel?.classList.toggle(hidden,!open);
+        panel?.toggleAttribute('inert',!open);
+        overlay?.classList.toggle('opacity-0', !open);
+        overlay?.classList.toggle('pointer-events-none', !open);
+
+        document .querySelectorAll(`[data-${name}-open]`) .forEach((el) => el.setAttribute('aria-expanded', String(open))); if (open && name === 'search') setTimeout(() => searchInput?.focus(), 100);
+    }
+
+    (Object.keys(panels) as PanelName[]).forEach((name) => { document.querySelectorAll(`[data-${name}-open]`).forEach((el) => el.addEventListener('click', (e) => { e.preventDefault(); toggle(name, true); }) );
+
+        document.querySelectorAll(`[data-${name}-close]`).forEach((el) => el.addEventListener('click', (e) => { e.preventDefault(); toggle(name, false); }) ); });
+
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { (Object.keys(panels) as PanelName[]).forEach((n) => toggle(n, false)); } });
+</script>

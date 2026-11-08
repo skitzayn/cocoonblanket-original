@@ -1,12 +1,13 @@
 ---
-import Header from '../components/header.astro';
-import Breadcrumb from '../components/breadcrumb.astro'
-import FoundersFav from '../components/six-product.astro'
-import VideoArea from '../components/video-area.astro'
-import References from '../components/references.astro'
-import EightPro from '../components/eight-product.astro'
-import Reviews from '../components/reviews.astro'
-import SplitVideo from '../components/split-video.astro'
+import Header from '../components/Header.astro'
+import Breadcrumb from '../components/ComponentsHome/Breadcrumb.astro'
+import FoundersFav from '../components/ComponentsHome/SixProduct.astro'
+import VideoArea from '../components/ComponentsHome/VideoArea.astro'
+import References from '../components/ComponentsHome/References.astro'
+import EightPro from '../components/ComponentsHome/EightProduct.astro'
+import Reviews from '../components/ComponentsHome/Reviews.astro'
+import SplitVideo from '../components/ComponentsHome/SplitVideo.astro'
+import Footer from '../components/Footer.astro'
 
 import Layout from '../layouts/Layout.astro'
 ---
@@ -41,6 +42,10 @@ import Layout from '../layouts/Layout.astro'
 
 	<div data-header-color="white">
 		<SplitVideo />
+	</div>
+
+	<div data-header-color="white">
+		<Footer />
 	</div>
 
 	<script>
@@ -91,6 +96,7 @@ import Layout from '../layouts/Layout.astro'
 			requestAnimationFrame(() => {
 				parallaxImages.forEach(img => {
 					const parent = img.parentElement;
+					if (!parent) return;
 					const rect = parent.getBoundingClientRect();
 					
 					if (rect.top < window.innerHeight && rect.bottom > 0) {
@@ -109,19 +115,13 @@ import Layout from '../layouts/Layout.astro'
 
 		const observer = new IntersectionObserver((entries) => {
 			entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					const desiredColor = entry.target.getAttribute('data-header-color');
+				if (!entry.isIntersecting) return;
 
-					if (desiredColor === 'black') {
-						header?.classList.remove('text-white');
-						header?.classList.add('text-black');
-						logo?.classList.remove('invert');
-					} else {
-						header?.classList.remove('text-black');
-						header?.classList.add('text-white');
-						logo?.classList.add('invert');
-					}
-				}
+				const isBlack = entry.target.getAttribute('data-header-color') === 'black';
+
+				header?.classList.toggle('text-black', isBlack);
+				header?.classList.toggle('text-white', !isBlack);
+				logo?.classList.toggle('invert', !isBlack);
 			});
 		}, {
 			rootMargin: '-2% 0px -95% 0px',
@@ -129,12 +129,15 @@ import Layout from '../layouts/Layout.astro'
 		});
 
 		sections.forEach(section => observer.observe(section));
+		sections.forEach(section => observer.observe(section));
 	</script>
 
 	<style is:global>
+
 		.mySwiper .swiper-wrapper {
 			transition-timing-function: cubic-bezier(0.76, 0, 0.24, 1) !important;
 		}
+		
 	</style>
 
 </Layout>

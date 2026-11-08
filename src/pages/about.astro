@@ -1,0 +1,132 @@
+---
+import Header from '../components/Header.astro'
+import Hero from '../components/ComponentsAbout/Hero.astro'
+import VideoArea from '../components/ComponentsHome/VideoArea.astro'
+import AboutMid from '../components/ComponentsAbout/AboutMid.astro'
+import FavAbout from '../components/ComponentsAbout/FavAbout.astro'
+import Reviews from '../components/ComponentsHome/Reviews.astro'
+import Footer from '../components/Footer.astro'
+
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout>
+
+	<Header />
+
+	<div data-header-color="black">
+		<Hero />
+	</div>
+
+	<div data-header-color="white">
+		<VideoArea />
+	</div>
+
+	<div data-header-color="black">
+		<AboutMid />
+	</div>
+
+	<div data-header-color="black">
+		<FavAbout />
+	</div>
+
+	<div data-header-color="black">
+		<Reviews />
+	</div>
+
+	<div data-header-color="white">
+		<Footer />
+	</div>
+
+	<script>
+		import Lenis from 'lenis';
+
+		const lenis = new Lenis({
+			duration: 1.2,
+			easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+		});
+
+		function raf(time: number) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+		}
+
+		requestAnimationFrame(raf);
+
+		import Swiper from 'swiper';
+		import { Navigation, FreeMode } from 'swiper/modules'; 
+
+		import 'swiper/css';
+		import 'swiper/css/navigation';
+		import 'swiper/css/free-mode';
+
+		const swiper = new Swiper('.mySwiper', {
+			modules: [Navigation, FreeMode],
+			spaceBetween: 20, 
+			speed: 400, 
+			freeMode: {
+				enabled: true,
+				sticky: true,
+				momentumBounce: false,
+			},
+			breakpoints: {
+				320: { slidesPerView: 1.2 },
+				768: { slidesPerView: 3 },
+				1024: { slidesPerView: 4 }
+			},
+			navigation: {
+				nextEl: '.custom-next',
+				prevEl: '.custom-prev',
+			},
+		});
+
+		const parallaxImages = document.querySelectorAll<HTMLElement>('.parallax-img');
+
+		window.addEventListener('scroll', () => {
+			requestAnimationFrame(() => {
+				parallaxImages.forEach(img => {
+					const parent = img.parentElement;
+					if (!parent) return;
+					const rect = parent.getBoundingClientRect();
+					
+					if (rect.top < window.innerHeight && rect.bottom > 0) {
+						const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height) * 2 - 1;
+						const maxMove = rect.height * 0.15;
+						const yPos = progress * maxMove;
+						img.style.transform = `translate3d(0, ${yPos}px, 0)`;
+					}
+				});
+			});
+		});
+
+		const header = document.getElementById('main-header');
+		const logo = document.getElementById('header-logo');
+		const sections = document.querySelectorAll('[data-header-color]');
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (!entry.isIntersecting) return;
+
+				const isBlack = entry.target.getAttribute('data-header-color') === 'black';
+
+				header?.classList.toggle('text-black', isBlack);
+				header?.classList.toggle('text-white', !isBlack);
+				logo?.classList.toggle('invert', !isBlack);
+			});
+		}, {
+			rootMargin: '-2% 0px -95% 0px',
+			threshold: 0
+		});
+
+		sections.forEach(section => observer.observe(section));
+	</script>
+
+	<style is:global>
+
+		.mySwiper .swiper-wrapper {
+			transition-timing-function: cubic-bezier(0.76, 0, 0.24, 1) !important;
+		}
+		
+	</style>
+
+</Layout>

@@ -1,0 +1,97 @@
+---
+import eightProTwo from '../../assets/images/EightProduct/eight-product-2.jpg';
+import eightProTwoHover from '../../assets/images/EightProduct/eight-product-2-hover.jpg';
+
+import eightProThree from '../../assets/images/EightProduct/eight-product-3.jpg';
+import eightProThreeHover from '../../assets/images/EightProduct/eight-product-3-hover.png';
+
+import eightProFour from '../../assets/images/EightProduct/eight-product-4.jpg';
+import eightProFourHover from '../../assets/images/EightProduct/eight-product-4-hover.webp';
+
+import eightProFive from '../../assets/images/EightProduct/eight-product-5.jpg';
+import eightProFiveHover from '../../assets/images/EightProduct/eight-product-5-hover.webp';
+---
+
+<section class="px-4">
+
+    <div class="flex justify-between pb-4 text-xl font-thin">
+        <p class="font-bold">Founder's Favorites</p>
+
+        <div class="flex items-center justify-center">
+            
+            <p>
+                <a href="#" class="relative after:bg-black after:absolute after:h-px after:w-0 after:-bottom-0.5 after:left-0 hover:after:w-full after:transition-all after:duration-700 text-xl">Shop All</a>
+            </p>
+
+        </div>
+    </div>
+
+</section>
+
+<section class="w-full grid grid-cols-4 max-[1140px]:grid-cols-2 items-start font-sans px-4 gap-4 text-white">
+
+    <div class="w-full text-black">
+
+        <a href="#" class="group relative block w-full aspect-4/5 overflow-hidden">
+
+            <img src={eightProTwo.src} alt="No. 008 Loam" class="w-full h-full object-cover">
+            <img src={eightProTwoHover.src} alt="" class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-250">
+
+        </a>
+
+        <div class="flex justify-between gap-2">
+            <p>No. 001 Silk</p>
+            <p>From $195.00</p>
+        </div>
+
+    </div>
+
+    <div class="w-full text-black">
+
+        <a href="#" class="group relative block w-full aspect-4/5 overflow-hidden">
+
+            <img src={eightProThree.src} alt="No. 015 Primrose Stripe" class="w-full h-full object-cover">
+            <img src={eightProThreeHover.src} alt="" class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-250">
+
+        </a>
+
+        <div class="flex justify-between gap-2">
+            <p>No. 002 Nectar</p>
+            <p>From $195.00</p>
+        </div>
+
+    </div>
+
+    <div class="w-full text-black">
+
+        <a href="#" class="group relative block w-full aspect-4/5 overflow-hidden">
+
+            <img src={eightProFour.src} alt="No. 008 Loam" class="w-full h-full object-cover">
+            <img src={eightProFourHover.src} alt="" class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-250">
+
+        </a>
+
+        <div class="flex justify-between gap-2">
+            <p>No. 003 Shell</p>
+            <p>From $195.00</p>
+        </div>
+
+    </div>
+
+    <div class="w-full text-black">
+
+        <a href="#" class="group relative block w-full aspect-4/5 overflow-hidden">
+
+            <img src={eightProFive.src} alt="No. 015 Primrose Stripe" class="w-full h-full object-cover">
+            <img src={eightProFiveHover.src} alt="" class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-250">
+
+        </a>
+
+        <div class="flex justify-between gap-2">
+            <p>No. 004 Patina</p>
+            <p>From $195.00</p>
+        </div>
+
+    </div>
+
+</section>
