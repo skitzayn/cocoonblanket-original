@@ -3,7 +3,7 @@
     <div class="grid grid-cols-2">
 
         <div>
-            <p class="text-7xl font-marcellus">CONTACT US</p>
+            <p class="text-7xl font-marcellus max-[1030px]:text-5xl max-[685px]:text-3xl">CONTACT US</p>
         </div>
 
         <div class="flex flex-col gap-6">
@@ -15,25 +15,54 @@
 
             <div class="flex flex-col gap-2">
 
-                <form class="flex w-full border border-neutral-400">
-                    <input type="text" placeholder="Name" class="bg-transparent px-6 py-4 text-sm text-black placeholder:text-neutral-500 outline-none" required>
-                </form>
+                <form action="/api/contact" method="POST" class="flex flex-col gap-2 w-full">
+                    <div class="flex w-full border border-neutral-400">
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Name"
+                            class="w-full bg-transparent px-6 py-4 text-sm text-black placeholder:text-neutral-500 outline-none"
+                            required
+                        >
+                    </div>
 
-                <form class="flex w-full border border-neutral-400">
-                    <input type="email" placeholder="Email Address" class="bg-transparent px-6 py-4 text-sm text-black placeholder:text-neutral-500 outline-none" required>
-                </form>
+                    <div class="flex w-full border border-neutral-400">
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email Address"
+                            class="w-full bg-transparent px-6 py-4 text-sm text-black placeholder:text-neutral-500 outline-none"
+                            required
+                        >
+                    </div>
 
-                <form class="flex w-full border border-neutral-400">
-                    <input type="tel" placeholder="Phone Number" class="bg-transparent px-6 py-4 text-sm text-black placeholder:text-neutral-500 outline-none" required>
-                </form>
+                    <div class="flex w-full border border-neutral-400">
+                        <input
+                            type="tel"
+                            name="phone"
+                            placeholder="Phone Number"
+                            class="w-full bg-transparent px-6 py-4 text-sm text-black placeholder:text-neutral-500 outline-none"
+                            required
+                        >
+                    </div>
 
-                <form class="flex w-full border border-neutral-400">
-                    <input type="text" placeholder="Message" class="bg-transparent px-6 pt-4 pb-20 text-sm text-black placeholder:text-neutral-500 outline-none" required>
-                </form>
+                    <div class="flex w-full border border-neutral-400">
+                        <textarea
+                            name="message"
+                            placeholder="Message"
+                            rows="4"
+                            class="w-full resize-none bg-transparent px-6 py-4 text-sm text-black placeholder:text-neutral-500 outline-none"
+                            required
+                        ></textarea>
+                    </div>
 
-                <button type="submit" class="bg-transparent py-4 text-sm text-neutral-900 border border-neutral-400 cursor-pointer hover:bg-[#141414] duration-300 hover:text-[#F0F0F0]">
-                        Sign up
-                </button>
+                    <button
+                        type="submit"
+                        class="bg-transparent py-4 text-sm text-neutral-900 border border-neutral-400 cursor-pointer hover:bg-[#141414] duration-300 hover:text-[#F0F0F0]"
+                    >
+                        Sign Up
+                    </button>
+                </form>
 
             </div>
 
